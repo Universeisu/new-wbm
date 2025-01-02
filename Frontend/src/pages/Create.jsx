@@ -85,7 +85,10 @@ const Create = () => {
       <h2 className="text-3xl font-bold text-center mb-6">Create New Post</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="title" className="block text-lg font-semibold text-gray-700">
+          <label
+            htmlFor="title"
+            className="block text-lg font-semibold text-gray-700"
+          >
             Title
           </label>
           <input
@@ -101,7 +104,10 @@ const Create = () => {
         </div>
 
         <div>
-          <label htmlFor="summary" className="block text-lg font-semibold text-gray-700">
+          <label
+            htmlFor="summary"
+            className="block text-lg font-semibold text-gray-700"
+          >
             Summary
           </label>
           <input
@@ -117,14 +123,24 @@ const Create = () => {
         </div>
 
         <div>
-          <label htmlFor="content" className="block text-lg font-semibold text-gray-700">
+          <label
+            htmlFor="content"
+            className="block text-lg font-semibold text-gray-700"
+          >
             Content
           </label>
-          <Editor value={content} onChange={handleContentChange} ref={editorRef} />
+          <Editor
+            value={content}
+            onChange={handleContentChange}
+            ref={editorRef}
+          />
         </div>
 
         <div>
-          <label htmlFor="file" className="block text-lg font-semibold text-gray-700">
+          <label
+            htmlFor="file"
+            className="block text-lg font-semibold text-gray-700"
+          >
             Upload Image
           </label>
           <input

@@ -6,7 +6,7 @@ const verifyToken = (req, res, next) => {
     return res.status(401).json({ message: "Token is missing" }); // ไม่มี token
   }
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+  jwt.verify(token, process.env.MY_CUSTOM_JWT_KEY, (err, decoded) => {
     if (err) {
       return res.status(403).json({ message: "Access Forbidden" }); // Token ไม่ถูกต้อง
     }

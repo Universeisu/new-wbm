@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken"); // เพิ่มการใช้งา�
 const UserModel = require("../models/User");
 const salt = bcrypt.genSaltSync(10);
 
-
 exports.register = async (req, res) => {
   const { username, password } = req.body;
   // ตรวจสอบว่าผู้ใช้ได้กรอกข้อมูลเข้ามาไหม
@@ -34,7 +33,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   const { username, password } = req.body;
 
-  // ตรวจสอบว่าผู้ใช้ได้กรอกข้อมูลเข้ามาไหม 
+  // ตรวจสอบว่าผู้ใช้ได้กรอกข้อมูลเข้ามาไหม
   if (!username || !password) {
     res.status(400).send({
       message: "Please provide both username and password!",
@@ -60,11 +59,9 @@ exports.login = async (req, res) => {
     }
 
     // สร้าง JWT Token
-    const token = jwt.sign(
-      { id: user._id, username: user.username },
-      process.env.JWT_SECRET, // ใช้ secret key ที่เก็บใน .env
-      { expiresIn: "1d" } // กำหนดระยะเวลาให้หมดอายุภายใน 1 วัน
-    );
+    const token = jwt.sign({ id: user.id }, process.env.MY_CUSTOM_JWT_KEY, {
+      expiresIn: "1d",
+    });
 
     // ส่ง Token กลับไปพร้อมกับข้อมูลผู้ใช้
     res.send({
