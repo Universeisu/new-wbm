@@ -7,7 +7,7 @@ const CUSTOM = process.env.MY_CUSTOM_JWT_KEY;
 //
 exports.createPost = async (req, res) => {
   //File upload
-  const { path } = req.file;
+  const {path: cover} = req.file;
   const author = req.userId;
   const { title, summary, content } = req.body;
   if (!title || !summary || !content) {
@@ -18,7 +18,7 @@ exports.createPost = async (req, res) => {
     title,
     summary,
     content,
-    cover: path,
+    cover,
     author,
   });
   res.json(postDoc);
